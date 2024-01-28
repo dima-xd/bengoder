@@ -1,3 +1,3 @@
-module https://github.com/dima-xd/bengoder
+module github.com/dima-xd/bengoder
 
 go 1.21.6
