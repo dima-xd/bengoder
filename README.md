@@ -1,6 +1,13 @@
 # Simple bencoder written in Go.
 
-Usage: 
+## Installation:
+`go get`:
+
+```
+go get github.com/dima-xd/bengoder
+```
+
+## Usage: 
 ```golang
 torrFile, err := os.Open("file.torrent")
 if err != nil {
