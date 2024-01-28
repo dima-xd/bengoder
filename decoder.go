@@ -7,12 +7,12 @@ import (
 	"strconv"
 )
 
-type Decoder struct {
+type decoder struct {
 	data []byte
 	pos  int
 }
 
-var d Decoder
+var d decoder
 
 func Decode(reader *bufio.Reader) (interface{}, error) {
 	data, err := io.ReadAll(reader)
@@ -20,7 +20,7 @@ func Decode(reader *bufio.Reader) (interface{}, error) {
 		return nil, err
 	}
 
-	d = Decoder{data, 0}
+	d = decoder{data, 0}
 
 	return decode(), nil
 }
@@ -29,22 +29,13 @@ func decode() interface{} {
 	switch d.data[d.pos] {
 	case 'd':
 		d.pos++
-
-		dictionary := decodeDictionary()
-
-		return dictionary
+		return decodeDictionary()
 	case 'l':
 		d.pos++
-
-		list := decodeList()
-
-		return list
+		return decodeList()
 	case 'i':
 		d.pos++
-
-		number := decodeInt()
-
-		return number
+		return decodeInt()
 	default:
 		return decodeString()
 	}
